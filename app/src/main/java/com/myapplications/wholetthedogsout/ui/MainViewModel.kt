@@ -21,23 +21,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 .bufferedReader()
                 .use { it.readText() }
             val jsonObject = JSONObject(jsonString)
-//            Log.d(TAG, "jsonObject $jsonObject")
-//            Log.d(TAG, "jsonString $jsonString")
 
             val urlsJSONArray = jsonObject.getJSONArray("urls")
             var listOfUrlAndSum : MutableList<Pair<String,Int>> = mutableListOf()
             for (i in 0 until urlsJSONArray.length()) {
                 val url = urlsJSONArray.getString(i)
-                val numberString = url.substringAfterLast("_").substringBeforeLast(".jpg")
-                val sum = numberString.sumOf { it.digitToInt() }
-                listOfUrlAndSum.add(Pair(url,sum))
+                listOfUrlAndSum.add(Pair(url,getSumFromUrl(url)))
             }
-
             _dogUrls.value = listOfUrlAndSum
 
         } catch (e : IOException) {
-            Log.d(TAG, "IOException while reading json file: $e")
+            Log.e(TAG, "IOException while reading json file: $e")
         }
+    }
+
+    private fun getSumFromUrl(url: String): Int {
+        val numberString = url.substringAfterLast("_").substringBeforeLast(".jpg")
+        return numberString.sumOf { it.digitToInt() }
     }
 
 
