@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.elevation.SurfaceColors
 import com.myapplications.wholetthedogsout.databinding.ActivityMainBinding
@@ -22,11 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var _binding : ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    private val TAG = "MainActivity"
     private lateinit var urlsAndSumsList : List<Pair<String,Int>>
-
-//    private val mainViewModel : MainViewModel =
-//        ViewModelProvider.AndroidViewModelFactory(this.application).create(MainViewModel::class.java)
 
     private val mainViewModel : MainViewModel by viewModels()
 
@@ -35,26 +30,24 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Sets up toolbar and colors of Status Bar
         setUpActionBarAndStatusBar()
-
-        //mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         binding.rvPhotos.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         mainViewModel.dogUrlsAndSums.observe(this){ urlsAndSums ->
             if (urlsAndSums != null){
-                Log.d(TAG, "dogUrlsAndSums size: ${urlsAndSums.size}")
                 urlsAndSumsList = urlsAndSums
                 val adapter = PhotosAdapter(urlsAndSumsList, this){ url ->
                     launchPhotoActivity(url)
                 }
                 binding.rvPhotos.adapter = adapter
-                binding.btnLoadPhotos.isEnabled = true
             }
         }
 
         binding.btnLoadPhotos.setOnClickListener {
             binding.rvPhotos.visibility = View.VISIBLE
+            mainViewModel.loadPhotos()
         }
     }
 

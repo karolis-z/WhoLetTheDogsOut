@@ -25,7 +25,6 @@ class PhotosAdapter(private var urlsAndSumsList : List<Pair<String,Int>>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d("PhotosAdapter", "url to load: ${urlsAndSumsList[position].first}")
-        //if (isImagePosition)
 
         Glide.with(context)
             .load(urlsAndSumsList[position].first)
@@ -39,13 +38,6 @@ class PhotosAdapter(private var urlsAndSumsList : List<Pair<String,Int>>,
             Log.d("PhotosAdapter", "url: ${urlsAndSumsList[position].first}")
             onItemClicked.invoke(urlsAndSumsList[position].first)
         }
-
-//            .load(urlsList[position])
-//            .fitCenter()
-//            .placeholder(R.drawable.placeholder_dog)
-//            .centerCrop()
-//            .load(ContextCompat.getDrawable(context, R.drawable.placeholder_image))
-//            .into(holder.imgPhoto)
     }
 
     override fun getItemCount(): Int {

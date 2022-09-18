@@ -6,7 +6,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.elevation.SurfaceColors
 import com.myapplications.wholetthedogsout.Constants
-import com.myapplications.wholetthedogsout.R
 import com.myapplications.wholetthedogsout.databinding.ActivityPhotoBinding
 
 class PhotoActivity : AppCompatActivity() {
@@ -19,11 +18,16 @@ class PhotoActivity : AppCompatActivity() {
         _binding = ActivityPhotoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Sets up toolbar and colors of Status Bar
         setUpActionBarAndStatusBar()
 
         val bundle : Bundle? = intent.extras
         val url = bundle?.getString(Constants.INTENT_KEY_URL)
 
+        if (!url.isNullOrBlank()) loadPhoto(url)
+    }
+
+    private fun loadPhoto(url : String){
         Glide.with(this )
             .load(url)
             .fitCenter()

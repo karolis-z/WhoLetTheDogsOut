@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">WhoLetTheDogsOut</string>
+
+    <!--SCREEN TITLES-->
+    <string name="title_photo_activity">Dog Photo</string>
+    <string name="title_main_activity">Who Let The Dogs Out</string>
+
+    <!--BUTTONS-->
+    <string name="button_load_photos">Load Photos</string>
+
+    <!--CONTENT DESCRIPTIONS-->
+    <string name="cd_photo_of_dog">Photo of a dog</string>
 </resources>
