@@ -28,7 +28,7 @@ class PhotosAdapter(private var urlsAndSumsList : List<Pair<String,Int>>,
 
         Glide.with(context)
             .load(urlsAndSumsList[position].first)
-            .centerCrop()
+//            .centerCrop()
             .placeholder(R.drawable.placeholder_dog)
             .into(holder.imgPhoto)
 

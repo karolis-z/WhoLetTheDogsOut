@@ -44,4 +44,11 @@
         <item name="colorSurface">@color/md_theme_light_primaryContainer</item>
         <item name="colorOnSurface">@color/md_theme_light_onPrimaryContainer</item>
     </style>
+
+    <!--TEXTVIEW - NUMBER IN THE MIDDLE OF THE PHOTO-->
+    <style name="NumberInMiddleOfPhoto">
+        <item name="android:textColor">@color/light_grey_middle_text</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

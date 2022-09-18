@@ -18,7 +18,7 @@ class UrlsRepository @Inject constructor(@ApplicationContext private val context
 
     fun getListOfUrlsFromJson(){
         try {
-            var jsonString = context.assets.open("json/dog_urls.json")
+            val jsonString = context.assets.open("json/dog_urls.json")
                 .bufferedReader()
                 .use { it.readText() }
             val jsonObject = JSONObject(jsonString)
