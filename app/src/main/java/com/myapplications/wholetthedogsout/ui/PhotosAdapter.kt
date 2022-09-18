@@ -1,7 +1,6 @@
 package com.myapplications.wholetthedogsout.ui
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,18 +23,14 @@ class PhotosAdapter(private var urlsAndSumsList : List<Pair<String,Int>>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("PhotosAdapter", "url to load: ${urlsAndSumsList[position].first}")
-
         Glide.with(context)
             .load(urlsAndSumsList[position].first)
-//            .centerCrop()
             .placeholder(R.drawable.placeholder_dog)
             .into(holder.imgPhoto)
 
         holder.tvSum.text = urlsAndSumsList[position].second.toString()
 
         holder.itemView.setOnClickListener {
-            Log.d("PhotosAdapter", "url: ${urlsAndSumsList[position].first}")
             onItemClicked.invoke(urlsAndSumsList[position].first)
         }
     }
