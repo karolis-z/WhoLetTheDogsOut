@@ -1,17 +1,26 @@
 package com.myapplications.wholetthedogsout.di
 
+import android.content.Context
 import android.provider.SyncStateContract
+import com.myapplications.wholetthedogsout.data.UrlsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-//@Module
-//@InstallIn(SingletonComponent::class)
+@Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun provideUrlsRepository(@ApplicationContext context : Context) : UrlsRepository{
+        return UrlsRepository(context)
+    }
 
 //    @Singleton
 //    @Provides
