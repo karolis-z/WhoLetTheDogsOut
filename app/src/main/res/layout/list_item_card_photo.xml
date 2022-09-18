@@ -16,15 +16,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <!--<ImageView
-            android:id="@+id/imgPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>-->
-
         <TextView
             android:id="@+id/tvSum"
             android:layout_width="match_parent"
@@ -35,7 +26,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-        <!--android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/md_theme_light_onSurface"-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
